@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package integration.api.template;
+
+option go_package = "integration/api/template/";
+
+import "annotations.proto";
+
+option (openapi.v3.document) = {
+  info: {
+    title: "XPTO API"
+    version: "1.0.0"
+    description: ""
+    contact: {
+      name: "XPTO Team"
+    }
+  }
+  servers: [
+    {
+      url: "https://xpto.com"
+      description: "Servidor de produção"
+    },
+    {
+      url: "https://xpto.stg.com"
+      description: "Servidor de staging"
+    }
+  ]
+  external_docs: {
+    description: "XPTO"
+    url: "https://docs.xpto.com"
+  }
+  components: {
+    security_schemes: {
+      additional_properties: [
+        {
+          name: "BearerAuth"
+          value: {
+            security_scheme: {
+              type: "http"
+              scheme: "bearer"
+              bearer_format: "JWT"
+              description: "Autenticação com token JWT Bearer"
+            }
+          }
+        }
+      ] 
+    }
+  }
+  security: [
+    {
+      additional_properties: [
+        {
+          name: "BearerAuth"
+          value: {
+            value: [ ]
+          }
+        }
+      ]
+    }
+  ]
+};
