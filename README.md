@@ -38,10 +38,12 @@ Não dependeu do protoc do sistema nem do Gradle.
 ``` sh
 ./protoc \
   --proto_path=protos \
-  --proto_path=template \
+  --proto_path=third_party/template \
+  --proto_path=third_party/google-api-common-protos \
+  --proto_path=third_party/protocolbuffers-protobuf/src \
   --plugin=protoc-gen-openapi=./protoc-gen-openapi-v3 \
   --openapi_out=. \
-  template/annotations.proto \
-  template/template.proto \
-  $(find protos/integration/api -name "*.proto")
+  third_party/template/annotations.proto \
+  third_party/template/template.proto \
+  $(find protos/ -name "*.proto")
 ```

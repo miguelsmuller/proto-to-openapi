@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package example.api.customservice;
+
+option go_package = "example/api/customservice;customservice";
+
+import "google/api/annotations.proto";
+
+service CustomService {
+  rpc CreateLabel (MyRequest) returns (MyResponse) {
+    option (google.api.http) = {
+      post: "/v1/labels"
+      body: "*"
+    };
+  }
+}
+
+message MyRequest {
+  string id = 1;
+  string anotherField = 2;
+  string andOtherField = 3;
+}
+
+message MyResponse {
+  string any_propertie = 1;
+}
